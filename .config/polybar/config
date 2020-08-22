@@ -24,10 +24,20 @@ foreground = ${xrdb:color7:#222}
 ;foreground = #dfdfdf
 foreground-alt = #555
 primary = ${xrdb:color1:ffb52a}
-secondary = ${xrdb:color3:e60053}
-terc = ${xrdb:color6:#333}
-quar = ${xrdb:color5:232}
+secondary = ${xrdb:color2:e60053}
+terc = ${xrdb:color3:333}
+quar = ${xrdb:color4:232}
+quint = ${xrdb:color5}
+sext = ${xrdb:color6}
 alert = #bd2c40
+
+##color0=#222
+##color1=#ffb52a
+##color3=#e60053
+##color5=#232
+##color6=#333
+##
+
 
 [bar/example]
 ;monitor = ${env:MONITOR:HDMI-1}
@@ -35,7 +45,7 @@ width = 100%
 height = 20
 ;offset-x = 1%
 ;offset-y = 1%
-radius = 9.0
+radius = 8.0
 fixed-center = true
 
 background = ${colors.background}
@@ -44,8 +54,8 @@ foreground = ${colors.foreground}
 line-size = 3
 line-color = #f00
 
-border-size = 3
-border-color = #00000000
+border-size = 0
+border-color = #666
 
 padding-left = 3 
 padding-right = 3
@@ -54,21 +64,21 @@ module-margin-left = 1
 module-margin-right = 1
 
 font-0 = fixed:pixelsize=10;1
-font-1 = FontAwesome5FreeSolid:style=Solid:size=10;1
+font-1 = TerminessTTF Nerd Font:style=Bold:size=10;1
 font-2 = unifont:fontformat=truetype:size=8:antialias=false;0
-
+font-3 = terminessTTF Nerd Font Mono:style=Bold:size=10;1
 
 modules-left = bspwm i3
 modules-center = popup-calendar
 modules-right = filesystem xkeyboard memory cpu
 
-;tray-position = right
-;tray-padding = 2
-;tray-background = #0063ff
+tray-position = left 
+tray-padding = 2
+tray-background = ${colors.primary} 
 tray-transparent = true
-tray-radius = 5.0
+tray-radius = 9.0
 ;wm-restack = bspwm
-;wm-restack = i3
+wm-restack = i3
 
 ;override-redirect = true
 
@@ -94,18 +104,18 @@ click-left = ~/scripts/popup-calendar.sh --popup &
 #format-prefix = " "
 #format = <label>
 #exec = python ~/Documentos/polybar-spotify/spotify_status.py -f '{play_pause} {song} - {artist}'
-#format-underline = #1db954
+#format-underline = ${colors.quar}
 
 [module/xkeyboard]
 type = internal/xkeyboard
 blacklist-0 = num lock
 
-format-prefix = "" 
-format-prefix-foreground = ${colors.foreground-alt}
-format-prefix-underline = ${colors.secondary}
+format-prefix = "  " 
+format-prefix-foreground = ${colors.primary}
+format-prefix-underline = ${colors.quar}
 
 label-layout = %layout%
-label-layout-underline = ${colors.secondary}
+label-layout-underline = ${colors.quar}
 
 label-indicator-padding = 2
 label-indicator-margin = 1
@@ -117,53 +127,55 @@ type = internal/fs
 interval = 25
 
 mount-0 = /
+mount-1 = /home
 
-label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+label-mounted = %{F#colors.terc}%mountpoint%%{F-#colors.terc}: %percentage_used%%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.primary}
-label-layout-underline = ${colors.quar}
+label-layout-underline = ${colors.terc}
 
 [module/i3]
 type = internal/i3
 format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
-fuzzy-match = false 
-label-active-font = 1
+fuzzy-match = true 
+label-active-font = 1  
 
 ; Icons
-ws-icon-0 = 1;U+F10C
-ws-icon-1 = 2;
-ws-icon-2 = 3;
-ws-icon-3 = 4;
-ws-icon-4 = 5;
-ws-icon-default = 
+
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-default =  
 
 ; Only show workspaces on the same output as the bar
 pin-workspaces = true
 
-label-mode-padding = 2
+label-mode-padding = 2 
 label-mode-foreground = #000
-label-mode-background = ${colors.primary}
+label-mode-background = ${colors.secondary}
 
 ; focused = Active workspace on focused monitor
-label-focused = %index%
+label-focused = %icon%
 label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
+label-focused-underline= ${colors.secondary}
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %index%
-label-unfocused-padding = 2
+label-unfocused = %icon%
+label-unfocused-padding = 2 
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %index%
+label-visible = %icon%
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
-label-urgent = %index%
+label-urgent = %icon%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
@@ -175,17 +187,17 @@ label-urgent-padding = 2
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = ""
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${colors.primary}
+format-prefix = "  "
+format-prefix-foreground = ${colors.primary}
+format-underline = ${colors.quint}
 label = %percentage:2%%
 
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${colors.secundary}
+format-prefix = "  "
+format-prefix-foreground = ${colors.primary}
+format-underline = ${colors.sext}
 label = %percentage_used%%
 
 
@@ -200,7 +212,7 @@ time = %H:%M
 time-alt = %H:%M:%S
 
 format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-foreground = ${colors.primary}
 format-underline = ${colors.terc}
 
 label = %date% %time%
