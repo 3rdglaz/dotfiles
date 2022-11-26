@@ -64,5 +64,31 @@ https://github.com/Peltoche/lsd
 
 https://github.com/sharkdp/bat
 
+## Disabilitar Power Save Mode
+
+Ve se tá ativo:
+
+```
+xset -q | awk '/DPMS is/ {print $NF}'
+```
+
+
+> xset -q | awk '/DPMS is/ {print $NF}'
+> 
+> Enabled
+
+Desabilita:
+
+```
+xset -dpms
+```
+
+Habilita:
+
+```
+xset dpms
+```
+
+
 fazer:
 arrumar notificação do i3
