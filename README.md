@@ -54,5 +54,15 @@ A configuração pode ser acessado dentro do nvim com
 :CocConfic.
 ´
 
+## LSD
+
+https://github.com/Peltoche/lsd
+
+[config](https://github.com/3rdglaz/dotfiles/blob/master/.config/lsd/config.yaml)
+
+## BAT
+
+https://github.com/sharkdp/bat
+
 fazer:
 arrumar notificação do i3
