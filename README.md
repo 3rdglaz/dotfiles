@@ -93,7 +93,13 @@ Habilita:
 ```
 xset dpms
 ```
+## Auto-Git-Commit
 
+editar/add **~/.netrc**
+
+```
+machine github.com login {usr} password {senha}
+```
 
 fazer:
 arrumar notificação do i3
