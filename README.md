@@ -43,16 +43,21 @@ https://github.com/Gogh-Co/Gogh
 
 [config](https://github.com/3rdglaz/dotfiles/blob/master/.config/nvim/init.vim)
 
+prerequisito: nodejs npm yarn
+
 neovim já vem com gerenciador de plugins, então o .conf já funciona do 0, só dar
-`
+
+```
   :PlugInstall
-`
+  :call coc#util#install()
+```
 
 pra inserir um autocomplete é só usar algum Language Server(no git do COC), e seguir o passo a passo
 A configuração pode ser acessado dentro do nvim com 
-´
+
+```
 :CocConfic.
-´
+```
 
 ## LSD
 
