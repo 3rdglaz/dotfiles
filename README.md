@@ -1,4 +1,4 @@
-# mini passo a passo23
+# mini passo a passo
 
 pela enesima vez eu começo a configurar um linux do nada
 
