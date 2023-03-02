@@ -25,5 +25,5 @@ jobs:
       - uses: actions/checkout@v3
 
       # Runs a single command using the runners shell
-      - name: ${ GITHUB_REF_NAME } 
-        run: echo "Branch atual:${GITHUB_REF#refs/heads/}"
+      - name: ${ GITHUB.REF_NAME } 
+        run: echo "${{ github.ref_name }}"
