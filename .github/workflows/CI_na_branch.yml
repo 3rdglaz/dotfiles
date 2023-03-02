@@ -26,4 +26,4 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: ${ GITHUB_REF_NAME } 
-        run: echo 'ci da branch'
+        run: echo "Branch atual:${GITHUB_REF#refs/heads/}"
